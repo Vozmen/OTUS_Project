@@ -5,13 +5,13 @@ $CONFIG = array (
   'secret' => 'cinaVSPNL1S1NKklI2sAKT0TxDP+DxfvpudwaOpySaGXoEhu',
   'trusted_domains' =>
   array (
-    0 => '172.20.0.3',
-    1 => 'cloud.netnoir.ru',
+    0 => '172.20.0.52',
+    1 => 'cloud2.netnoir.ru',
   ),
   'datadirectory' => '/HomeFS/4.NEXTCLOUD',
   'dbtype' => 'mysql',
   'version' => '25.0.0.18',
-  'overwrite.cli.url' => 'http://172.20.0.3',
+  'overwrite.cli.url' => 'http://172.20.0.52',
   'dbname' => 'nextclouddb',
   'dbhost' => 'localhost',
   'dbport' => '',
