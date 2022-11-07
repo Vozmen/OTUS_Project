@@ -25,7 +25,50 @@ $CONFIG = array (
   'preview_max_x' => NULL,
   'preview_max_y' => NULL,
   'preview_max_filesize_image' => -1,
-  'enable_previews' => true,
-  'theme' => '',
+  'enabledPreviewProviders' =>
+  array (
+    0 => 'OC\\Preview\\TXT',
+    1 => 'OC\\Preview\\MarkDown',
+    2 => 'OC\\Preview\\OpenDocument',
+    3 => 'OC\\Preview\\PDF',
+    4 => 'OC\\Preview\\MSOffice2003',
+    5 => 'OC\\Preview\\MSOfficeDoc',
+    6 => 'OC\\Preview\\Image',
+    7 => 'OC\\Preview\\Photoshop',
+    8 => 'OC\\Preview\\TIFF',
+    9 => 'OC\\Preview\\SVG',
+    10 => 'OC\\Preview\\Font',
+    11 => 'OC\\Preview\\MP3',
+    12 => 'OC\\Preview\\Movie',
+    13 => 'OC\\Preview\\MKV',
+    14 => 'OC\\Preview\\MP4',
+    15 => 'OC\\Preview\\AVI',
+  ),
+  'app_install_overwrite' =>
+  array (
+    0 => 'epubreader',
+    1 => 'files_reader',
+    2 => 'files_ebookreader',
+  ),
   'loglevel' => 2,
+  'twofactor_enforced' => 'true',
+  'twofactor_enforced_groups' =>
+  array (
+    0 => 'admin',
+  ),
+  'twofactor_enforced_excluded_groups' =>
+  array (
+  ),
+  'theme' => '',
+  'mail_smtpmode' => 'smtp',
+  'mail_sendmailmode' => 'smtp',
+  'mail_smtpsecure' => 'tls',
+  'mail_from_address' => 'i.vozdvizhensky',
+  'mail_domain' => 'netnoir.ru',
+  'mail_smtphost' => 'mail.netnoir.ru',
+  'mail_smtpport' => '587',
+  'mail_smtpauth' => 1,
+  'mail_smtpname' => 'i.vozdvizhensky@netnoir.ru',
+  'mail_smtppassword' => 'Br0adcastMaster26042986',
+  'mail_smtpauthtype' => 'LOGIN',
 );
