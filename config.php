@@ -6,6 +6,7 @@ $CONFIG = array (
   'trusted_domains' =>
   array (
     0 => '172.20.0.52',
+    1 => '172.20.0.48',
   ),
   'datadirectory' => '/nextcloud',
   'dbtype' => 'mysql',
