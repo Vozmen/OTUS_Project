@@ -7,6 +7,7 @@ $CONFIG = array (
   array (
     0 => '172.20.0.52',
     1 => '172.20.0.48',
+    2 => 'cloud1.netnoir.ru',
   ),
   'datadirectory' => '/nextcloud',
   'dbtype' => 'mysql',
