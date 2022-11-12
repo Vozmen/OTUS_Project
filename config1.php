@@ -1,8 +1,8 @@
 <?php
 $CONFIG = array (
-  'instanceid' => 'ocobz25kjlqq',
-  'passwordsalt' => 'xrU4zDwa93huR/7DgLq3EUW1g39hRp',
-  'secret' => 'fm7W/NiQy10ZZacquxHNUOjLd5OlG7Sn3KsmZhf712+uTbnE',
+  'instanceid' => 'ocszkmttnpw9',
+  'passwordsalt' => 'wfQbJsWi7jdBrcpqmc5eOYrYkez0PW',
+  'secret' => '1tMBj4ijYZ9NqWN5phnDxLyIaCadV1YzOXJX6a+9wgNzmky/',
   'trusted_domains' =>
   array (
     0 => '172.20.0.52',
