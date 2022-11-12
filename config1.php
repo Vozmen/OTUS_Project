@@ -1,8 +1,8 @@
 <?php
 $CONFIG = array (
-  'instanceid' => 'ocszkmttnpw9',
-  'passwordsalt' => 'wfQbJsWi7jdBrcpqmc5eOYrYkez0PW',
-  'secret' => '1tMBj4ijYZ9NqWN5phnDxLyIaCadV1YzOXJX6a+9wgNzmky/',
+  'instanceid' => 'ocbfijw82irm',
+  'passwordsalt' => 'qhRDo7+u+ry4/yIPU/DJy+4BZeHpfa',
+  'secret' => 'U9bZ9m/pYIsToVcfHq7/raOLNPNlcJhqijA0vV930gQw9cKc',
   'trusted_domains' =>
   array (
     0 => '172.20.0.52',
@@ -18,7 +18,7 @@ $CONFIG = array (
   'dbport' => '',
   'dbtableprefix' => 'oc_',
   'mysql.utf8mb4' => true,
-  'dbuser' => 'test',
+  'dbuser' => 'nextcloud',
   'dbpassword' => 'qwe123',
   'installed' => true,
   'check_data_directory_permissions' => false,
