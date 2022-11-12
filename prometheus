@@ -25,3 +25,4 @@ scrape_configs:
       - targets:
         - localhost:9100
         - 172.20.0.52:9100
+        - 172.20.0.53:9100
