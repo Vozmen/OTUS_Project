@@ -1,0 +1,30 @@
+#mysql-server setting (sync)
+touch /nextcloud/lockfile2
+sleep 1
+until [[ -e /nextcloud/lockfile1 ]]
+do
+  sleep 1
+done
+
+wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/master2.conf -O /etc/mysql/mysql.conf.d/mysqld.cnf
+systemctl restart mysql.service
+rm /nextcloud/lockfile2 -f
+
+mysql -uroot -pqwe123 -Bse "CREATE USER 'repl'@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'qwe123'; GRANT ALL PRIVILEGES on *.* TO 'repl'@'%'; ALTER USER 'repl'@'%' IDENTIFIED WITH mysql_native_password BY 'qwe123'; FLUSH PRIVILEGES"
+
+touch /nextcloud/lockfile4
+sleep 1
+until [[ -e /nextcloud/lockfile3 ]]
+do
+  sleep 1
+done
+
+mysql -uroot -pqwe123 -Bse "STOP SLAVE"
+mysql -h 172.20.0.52 -urepl -pqwe123 -Bse "FLUSH TABLES WITH READ LOCK"
+binlog=$(mysql -h 172.20.0.52 -urepl -pqwe123 -Bse "SHOW MASTER STATUS" | cut -f 1)
+position=$(mysql -h 172.20.0.52 -urepl -pqwe123 -Bse "SHOW MASTER STATUS" | cut -f 2)
+mysql -uroot -pqwe123 -Bse "CHANGE MASTER TO MASTER_HOST='172.20.0.52', MASTER_USER='repl', MASTER_PASSWORD='qwe123', MASTER_LOG_FILE='$binlog', MASTER_LOG_POS=$position; START SLAVE"
+mysql -h 172.20.0.52 -urepl -pqwe123 -Bse "UNLOCK TABLES"
+rm /nextcloud/lockfile4 -f
+
+echo -e "\033[42m\033[30m SQL-SERVER CONFIGURED \033[0m"
