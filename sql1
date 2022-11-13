@@ -2,13 +2,7 @@
 
 wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/master1.conf -O /etc/mysql/mysql.conf.d/mysqld.cnf
 systemctl restart mysql.service
-
 mysql -uroot -pqwe123 -Bse "CREATE USER 'repl'@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'qwe123'; GRANT ALL PRIVILEGES on *.* TO 'repl'@'%'; ALTER USER 'repl'@'%' IDENTIFIED WITH mysql_native_password BY 'qwe123'; FLUSH PRIVILEGES"
-
-until [[ -e /nextcloud/lockfile ]]
-do
-  sleep 1
-done
 
 mysql -h 172.20.0.53 -uroot -pqwe123 -Bse "STOP SLAVE"
 mysql -urepl -pqwe123 -Bse "FLUSH TABLES WITH READ LOCK"
