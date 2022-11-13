@@ -1,4 +1,5 @@
 #mysql-server setting (sync)
+rm lockfile* -f
 touch /nextcloud/lockfile1
 sleep 1
 until [[ -e /nextcloud/lockfile2 ]]
