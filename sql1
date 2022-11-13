@@ -25,6 +25,7 @@ binlog=$(mysql -h 172.20.0.53 -urepl -pqwe123 -Bse "SHOW MASTER STATUS" | cut -f
 position=$(mysql -h 172.20.0.53 -urepl -pqwe123 -Bse "SHOW MASTER STATUS" | cut -f 2)
 mysql -uroot -pqwe123 -Bse "CHANGE MASTER TO MASTER_HOST='172.20.0.53', MASTER_USER='repl', MASTER_PASSWORD='qwe123', MASTER_LOG_FILE='$binlog', MASTER_LOG_POS=$position; START SLAVE"
 mysql -h 172.20.0.53 -urepl -pqwe123 -Bse "UNLOCK TABLES"
+sleep 5
 rm /nextcloud/lockfile3 -f
 
 sleep 5
