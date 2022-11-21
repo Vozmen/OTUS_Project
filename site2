@@ -19,9 +19,6 @@ catch(PDOException $e)
 {
 echo  $e->getMessage();
 }
-{
-#<img src='https://cloud.netnoir.ru/index.php/s/tmCxDQPtMyiyK2F/download/harold2.png'>;
-}
 ?>
 <html>
  <head>
