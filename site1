@@ -1,0 +1,9 @@
+<html>
+ <head>
+  <title>Тестируем PHP</title>
+ </head>
+ <body>
+ <?php echo '<p>Привет, мир!</p>'; ?>
+   echo "<img src='https://cloud.netnoir.ru/index.php/s/Lio22xX9TRjeEsg/download/20190307_133538_C4B35DF5-E3B0-4E3F-9D60-CE20D76E289F.JPG'>";
+ </body>
+</html>
