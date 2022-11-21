@@ -1,0 +1,33 @@
+<?php
+try {
+$pdo = new PDO("mysql:host=localhost;dbname=testdb", "repl", "qwe123");
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+$sql="select * from person";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+echo "<table border='1' align='center'>";
+while ( ($row = $stmt->fetch(PDO::FETCH_ASSOC) ) !== false) {
+echo "<tr>";
+echo "<td>".$row['name']."</td>";
+echo "<td>".$row['message']."</td>";
+echo "</tr>";
+}
+echo "</table>";
+}
+catch(PDOException $e)
+{
+echo  $e->getMessage();
+}
+{
+#<img src='https://cloud.netnoir.ru/index.php/s/tmCxDQPtMyiyK2F/download/harold2.png'>;
+}
+?>
+<html>
+ <head>
+  <title>Apache Server 1</title>
+ </head>
+ <body>
+  <img src='https://cloud.netnoir.ru/index.php/s/tmCxDQPtMyiyK2F/download/harold2.png'>;
+ </body>
+</html>
