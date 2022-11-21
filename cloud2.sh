@@ -7,7 +7,7 @@ sleep 2
 
 #preinstallation, system setting
 sudo timedatectl set-timezone Europe/Moscow
-sudo apt install -y sudo apt install php php-apcu php-bcmath php-cli php-common php-curl php-gd php-gmp php-imagick php-intl php-mbstring php-mysql php-zip php-xml unzip cifs-utils nfs-common mysql-server
+sudo apt install -y php php-apcu php-bcmath php-cli php-common php-curl php-gd php-gmp php-imagick php-intl php-mbstring php-mysql php-zip php-xml unzip cifs-utils nfs-common mysql-server
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/site2 -O /var/www/html/index.php
 sudo systemctl restart apache2.service
 sudo hostnamectl set-hostname cloud2.netnoir.ru
