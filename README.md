@@ -17,11 +17,14 @@
 Сервер ELK читает логи балансировщика
 
 Скрипты, выполняющие установку и настройку программ:
-№ cloud1.conf для Web-сервер1.
+# cloud1.conf для Web-сервер1.
 >Скачиваются файлы: cloud1.conf (конфигурация apache), master1.conf (конфигурация mysql-server), node_exporter.service (сервис node_exporter), site1 (главная страница с запросом к БД))  
-cloud2.conf для Web-сервер2. Скачиваются файлы: cloud2.conf (конфигурация apache), master2.conf (конфигурация mysql-server), node_exporter.service (сервис node_exporter), site2 (главная страница с запросом к БД))  
-nginx.sh для балансировщика. Скачиваются файлы: default (конфигурация nginx). Также, с локального хранилища скачивается rpm пакет filebeat.rpm для установки соответствующего сервиса  
-promet.sh для сервера Prometheus. Скачиваются файлы: node_exporter.service (сервис node_exporter), prometheus.service (сервис prometheus), prometheus (файл конфигурации prometheus)  
+# cloud2.conf для Web-сервер2.
+>Скачиваются файлы: cloud2.conf (конфигурация apache), master2.conf (конфигурация mysql-server), node_exporter.service (сервис node_exporter), site2 (главная страница с запросом к БД))  
+# nginx.sh для балансировщика.
+>Скачиваются файлы: default (конфигурация nginx). Также, с локального хранилища скачивается rpm пакет filebeat.rpm для установки соответствующего сервиса  
+# promet.sh для сервера Prometheus.
+>Скачиваются файлы: node_exporter.service (сервис node_exporter), prometheus.service (сервис prometheus), prometheus (файл конфигурации prometheus)  
 скрипт fin.ps1 запускает установку
 
 Для правильной работы на ВМ должны быть настроены доступы по ssh-ключам, соответствующие пользователи должны быть в sudoers и иметь возможность беспаолльного выполнения команд от su
