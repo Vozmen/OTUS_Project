@@ -10,17 +10,17 @@
 >5. Сервер ELK, CentOS 7
 
 ### Скрипты, выполняющие установку и настройку программ:
->### Скрипт fin.ps1 запускает установку
-#### cloud1.conf для Web-сервер1.
+>### Скрипт fin.ps1 запускает установку:
+>#### cloud1.conf для Web-сервер1.
 >Скачиваются файлы: cloud1.conf (конфигурация apache), master1.conf (конфигурация mysql-server), node_exporter.service (сервис node_exporter), site1 (главная страница с запросом к БД))  
-#### cloud2.conf для Web-сервер2.
+>#### cloud2.conf для Web-сервер2.
 >Скачиваются файлы: cloud2.conf (конфигурация apache), master2.conf (конфигурация mysql-server), node_exporter.service (сервис node_exporter), site2 (главная страница с запросом к БД))  
-#### nginx.sh для балансировщика.
+>#### nginx.sh для балансировщика.
 >Скачиваются файлы: default (конфигурация nginx). Также, с локального хранилища скачивается rpm пакет filebeat.rpm для установки соответствующего сервиса  
-#### promet.sh для сервера Prometheus.
+>#### promet.sh для сервера Prometheus.
 >Скачиваются файлы: node_exporter.service (сервис node_exporter), prometheus.service (сервис prometheus), prometheus (файл конфигурации prometheus)  
 скрипт fin.ps1 запускает установку
-#### elk.sh для сервера ELK.
+>#### elk.sh для сервера ELK.
 >Скачиваются файлы: все файлы скачиваются с локального хранилища  
 
 ### В результате исполнения скрипта получаются:
