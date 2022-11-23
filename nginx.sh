@@ -39,6 +39,7 @@ sleep 2
 #Services activated
 systemctl enable --now nginx
 systemctl enable --now filebeat
+curl localhost
 
 curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER: SERVICES ACTIVATED"
 sleep 2
