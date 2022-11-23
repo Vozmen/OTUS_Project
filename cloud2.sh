@@ -9,6 +9,12 @@ sleep 2
 sudo timedatectl set-timezone Europe/Moscow
 sudo apt install -y php php-apcu php-bcmath php-cli php-common php-curl php-gd php-gmp php-imagick php-intl php-mbstring php-mysql php-zip php-xml unzip cifs-utils nfs-common mysql-server
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/site2 -O /var/www/html/index.php
+sudo sh -c "echo \<VirtualHost \*:80\>  > /etc/apache2/sites-enabled/000-default.conf"
+sudo sh -c "echo ServerAdmin webmaster@localhost >> /etc/apache2/sites-enabled/000-default.conf"
+sudo sh -c "echo DocumentRoot /var/www/html/index.php >> /etc/apache2/sites-enabled/000-default.conf"
+sudo sh -c "echo ErrorLog \${APACHE_LOG_DIR}/error.log >> /etc/apache2/sites-enabled/000-default.conf"
+sudo sh -c "echo CustomLog \${APACHE_LOG_DIR}/access.log combined >> /etc/apache2/sites-enabled/000-default.conf"
+sudo sh -c "echo \<\/VirtualHost\> >> /etc/apache2/sites-enabled/000-default.conf"
 sudo systemctl restart apache2.service
 sudo hostnamectl set-hostname cloud2.netnoir.ru
 sudo mkdir /nextcloud
