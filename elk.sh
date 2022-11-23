@@ -58,5 +58,5 @@ done
 
 curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-1PNc_kGFm4/sendMessage -d chat_id=191948484 -d text="ELK: LOGSTASH INSTALLATION COMPLETED"
 sleep 2
-curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER: SYSTEM READY"
+curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-1PNc_kGFm4/sendMessage -d chat_id=191948484 -d text="ELK: SYSTEM READY"
 #/usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/nginx.conf
