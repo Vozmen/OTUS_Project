@@ -5,10 +5,8 @@ curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOW
 sleep 2
 
 #Preinstallation, system setting 
-cat << EOF > /etc/hosts
-127.0.1.1 elk.netnoir.ru
-172.20.0.51 elk
-EOF
+sudo sh -c "echo 127.0.1.1 nginx.netnoir.ru > /etc/hosts"
+sudo sh -c "echo 172.20.0.48 nginx >> /etc/hosts"
 #
 yum install epel-release -y
 yum install nginx -y
