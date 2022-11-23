@@ -22,7 +22,7 @@ echo  $e->getMessage();
 ?>
 <html>
  <head>
-  <title>Apache Server 1</title>
+  <title>Apache Server 2</title>
  </head>
  <body>
   <img src='https://cloud.netnoir.ru/index.php/s/tmCxDQPtMyiyK2F/download/harold2.png'>;
