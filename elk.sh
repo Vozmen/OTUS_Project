@@ -23,7 +23,7 @@ sleep 2
 
 #Elasticsearch installation
 mkdir /root/RPMs
-wget https://cloud.netnoir.ru/index.php/s/27yBYCW4e87JSsQ/download/elasticsearch_7.17.3_x86_64-224190-9bcb26.rpm -O /root/RPMs/elasticsearch.rpm --no-check-certificate
+wget https://cloud.netnoir.ru/index.php/s/qY2SYs6SKSoLJ6X/download/elasticsearch_7.17.3_x86_64-224190-9bcb26.rpm -O /root/RPMs/elasticsearch.rpm --no-check-certificate
 rpm -i /root/RPMs/elasticsearch.rpm
 echo -Xms2g > /etc/elasticsearch/jvm.options.d/jvm.options
 echo -Xms2g >> /etc/elasticsearch/jvm.options.d/jvm.options
@@ -33,7 +33,7 @@ curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-
 sleep 2
 
 #Kibana installation
-wget https://cloud.netnoir.ru/index.php/s/BCM8KPXqBWnEnnA/download/kibana_7.17.3_x86_64-224190-b13e53.rpm -O /root/RPMs/kibana.rpm --no-check-certificate
+wget https://cloud.netnoir.ru/index.php/s/mKtK6sq999Q8dak/download/kibana_7.17.3_x86_64-224190-b13e53.rpm -O /root/RPMs/kibana.rpm --no-check-certificate
 rpm -i /root/RPMs/kibana.rpm
 rm /etc/kibana/kibana.yml -f
 wget https://cloud.netnoir.ru/index.php/s/PorTKrtyC4ocTFA/download/kibana.yml -O /etc/kibana/kibana.yml --no-check-certificate
@@ -43,7 +43,7 @@ curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-
 sleep 2
 
 #Logstash installation
-wget https://cloud.netnoir.ru/index.php/s/KfmME35en2RGWqi/download/logstash_7.17.3_x86_64-224190-3a605f.rpm -O /root/RPMs/logstash.rpm --no-check-certificate
+wget https://cloud.netnoir.ru/index.php/s/nwcdBJ3N7BkW7Lr/download/logstash_7.17.3_x86_64-224190-3a605f.rpm -O /root/RPMs/logstash.rpm --no-check-certificate
 rpm -i /root/RPMs/logstash.rpm
 rm /etc/logstash/logstash.yml -f
 wget https://cloud.netnoir.ru/index.php/s/tarb88YsZrFFWDT/download/logstash.yml -O /etc/logstash/logstash.yml --no-check-certificate
