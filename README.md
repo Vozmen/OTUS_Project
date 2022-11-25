@@ -11,15 +11,14 @@
 
 ### Скрипты, выполняющие установку и настройку программ:
 >### Скрипт fin.ps1 запускает установку:
->#### cloud1.conf для Web-сервер1.
+>#### web1.conf для Web-сервер1.
 >Скачиваются файлы: master1.conf (конфигурация mysql-server), node_exporter.service (сервис node_exporter), site1 (главная страница с запросом к БД))  
->#### cloud2.conf для Web-сервер2.
+>#### web2.conf для Web-сервер2.
 >Скачиваются файлы: master2.conf (конфигурация mysql-server), node_exporter.service (сервис node_exporter), site2 (главная страница с запросом к БД))  
 >#### nginx.sh для балансировщика.
 >Скачиваются файлы: default (конфигурация nginx). Также, с локального хранилища скачивается rpm пакет filebeat.rpm для установки соответствующего сервиса  
 >#### promet.sh для сервера Prometheus.
->Скачиваются файлы: node_exporter.service (сервис node_exporter), prometheus.service (сервис prometheus), prometheus (файл конфигурации prometheus)  
-скрипт fin.ps1 запускает установку
+>Скачиваются файлы: node_exporter.service (сервис node_exporter), prometheus.service (сервис prometheus), prometheus (файл конфигурации prometheus). Также, с локального хранилища скачивается deb пакет grafana.deb для установки соответствующего сервиса
 >#### elk.sh для сервера ELK.
 >Скачиваются файлы: все файлы скачиваются с локального хранилища  
 
