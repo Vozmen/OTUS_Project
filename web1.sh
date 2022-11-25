@@ -2,7 +2,7 @@
 sudo apt update
 sudo apt upgrade -y
 
-curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="CLOUD1: SYSTEM UPDATED"
+curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="WEB1: SYSTEM UPDATED"
 sleep 2
 
 #preinstallation, system setting
@@ -29,7 +29,7 @@ sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/master1.con
 sudo systemctl restart mysql.service
 sudo mysql -uroot -pqwe123 -Bse "CREATE USER 'repl'@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'qwe123'; GRANT ALL PRIVILEGES on *.* TO 'repl'@'%'; ALTER USER 'repl'@'%' IDENTIFIED WITH mysql_native_password BY 'qwe123'; FLUSH PRIVILEGES"
 
-curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="CLOUD1: PREINSTALLATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="WEB1: PREINSTALLATION COMPLETED"
 sleep 2
 
 #prometheus/node_extractor installation
@@ -44,7 +44,7 @@ sudo chown node_exporter: /usr/local/bin/node_exporter
 sudo systemctl daemon-reload
 sudo systemctl enable --now node_exporter.service
 
-curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="CLOUD1: PROMETHEUS/NODE_EXTRACTOR INSTALLATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="WEB1: PROMETHEUS/NODE_EXTRACTOR INSTALLATION COMPLETED"
 sleep 2
 
 #mysql-server setting (sync)
@@ -69,6 +69,6 @@ do
 sudo mysql -uroot -pqwe123 testdb < /nextcloud/testdb/$var.sql
 done
 
-curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="CLOUD1: SQL-SERVER SYNCHRONIZATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="WEB1: SQL-SERVER SYNCHRONIZATION COMPLETED"
 sleep 2
-curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="CLOUD1: SYSTEM READY"
+curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="WEB1: SYSTEM READY"
