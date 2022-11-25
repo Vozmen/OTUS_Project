@@ -17,12 +17,12 @@ sudo sh -c "echo CustomLog \${APACHE_LOG_DIR}/access.log combined >> /etc/apache
 sudo sh -c "echo \<\/VirtualHost\> >> /etc/apache2/sites-enabled/000-default.conf"
 sudo systemctl restart apache2.service
 sudo hostnamectl set-hostname web1.netnoir.ru
-sudo mkdir /db
+sudo mkdir /data
 sudo sh -c "echo 127.0.1.1 web1.netnoir.ru > /etc/hosts"
 sudo sh -c "echo 172.20.0.52 web1 >> /etc/hosts"
 sudo sh -c "echo 172.20.0.2 HSERVER >> /etc/hosts"
 
-sudo sh -c "echo //HSERVER/db  /nextcloud cifs    username=otus,password=qwe123,uid=33,gid=33,iocharset=utf8,nofail,_netdev,noperm,mfsymlinks   0 0 >> /etc/fstab"
+sudo sh -c "echo //HSERVER/data  /data cifs    username=otus,password=qwe123,uid=33,gid=33,iocharset=utf8,nofail,_netdev,noperm,mfsymlinks   0 0 >> /etc/fstab"
 sudo mount -a
 
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/master1.conf -O /etc/mysql/mysql.conf.d/mysqld.cnf
@@ -63,10 +63,10 @@ sudo mysql -h 172.20.0.53 -urepl -pqwe123 -Bse "CHANGE MASTER TO MASTER_HOST='17
 sudo mysql -uroot -pqwe123 -Bse "UNLOCK TABLES"
 
 sudo mysql -uroot -pqwe123 -Bse "create database testdb"
-table="/nextcloud/testdb/tables_list"
+table="/data/testdb/tables_list"
 for var in $(cat $table)
 do
-sudo mysql -uroot -pqwe123 testdb < /nextcloud/testdb/$var.sql
+sudo mysql -uroot -pqwe123 testdb < /data/testdb/$var.sql
 done
 
 curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="WEB1: SQL-SERVER SYNCHRONIZATION COMPLETED"
