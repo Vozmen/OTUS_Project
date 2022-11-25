@@ -19,7 +19,7 @@ sleep 2
 
 #Filebeat installation
 mkdir /root/RPMs
-wget https://cloud.netnoir.ru/index.php/s/xJkmaHAziRnwpyK/download/filebeat_7.17.3_x86_64-224190-4c3205.rpm -O /root/RPMs/filebeat_7.17.3_x86_64-224190-4c3205.rpm --no-check-certificate
+wget https://cloud.netnoir.ru/index.php/s/WTZwZZHiirZQoic/download/filebeat_7.17.3_x86_64-224190-4c3205.rpm -O /root/RPMs/filebeat_7.17.3_x86_64-224190-4c3205.rpm --no-check-certificate
 rpm -i /root/RPMs/*.rpm
 wget https://cloud.netnoir.ru/index.php/s/QKca4tmJ5SEBX9k/download/filebeat.yml -O /etc/filebeat/filebeat.yml --no-check-certificate
 
