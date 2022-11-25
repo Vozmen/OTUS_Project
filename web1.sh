@@ -17,12 +17,12 @@ sudo sh -c "echo CustomLog \${APACHE_LOG_DIR}/access.log combined >> /etc/apache
 sudo sh -c "echo \<\/VirtualHost\> >> /etc/apache2/sites-enabled/000-default.conf"
 sudo systemctl restart apache2.service
 sudo hostnamectl set-hostname web1.netnoir.ru
-sudo mkdir /nextcloud
+sudo mkdir /db
 sudo sh -c "echo 127.0.1.1 web1.netnoir.ru > /etc/hosts"
 sudo sh -c "echo 172.20.0.52 web1 >> /etc/hosts"
 sudo sh -c "echo 172.20.0.2 HSERVER >> /etc/hosts"
 
-sudo sh -c "echo //HSERVER/ncdata  /nextcloud cifs    username=otus,password=qwe123,uid=33,gid=33,iocharset=utf8,nofail,_netdev,noperm,mfsymlinks   0 0 >> /etc/fstab"
+sudo sh -c "echo //HSERVER/db  /nextcloud cifs    username=otus,password=qwe123,uid=33,gid=33,iocharset=utf8,nofail,_netdev,noperm,mfsymlinks   0 0 >> /etc/fstab"
 sudo mount -a
 
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/master1.conf -O /etc/mysql/mysql.conf.d/mysqld.cnf
