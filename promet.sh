@@ -48,13 +48,15 @@ curl -s -X POST https://api.telegram.org/bot5895911093:AAHGtzWM82We7wuhlpfN6KgTm
 sleep 2
 
 #Grafana installation
-sudo apt update
-sudo apt install -y apt-transport-https
-sudo apt install -y software-properties-common
-sudo wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-sudo echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
-sudo apt update
-sudo apt install -y grafana
+wget https://cloud.netnoir.ru/index.php/s/s923X6pMwTAc9pA -O /root/grafana.deb
+sudo dpkg -i /root/grafana.deb
+#sudo apt update
+#sudo apt install -y apt-transport-https
+#sudo apt install -y software-properties-common
+#sudo wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+#sudo echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+#sudo apt update
+#sudo apt install -y grafana
 sudo systemctl enable --now grafana-server.service
 sudo rm /var/lib/grafana/grafana.db -f
 sudo wget https://cloud.netnoir.ru/index.php/s/Kk39dFk7rHA4Ci7/download/grafana.db -O /var/lib/grafana/grafana.db
