@@ -2,7 +2,7 @@
 sudo apt update
 sudo apt upgrade -y
 
-curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="CLOUD2: SYSTEM UPDATED"
+curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="WEB2: SYSTEM UPDATED"
 sleep 2
 
 #preinstallation, system setting
@@ -16,10 +16,10 @@ sudo sh -c "echo ErrorLog \${APACHE_LOG_DIR}/error.log >> /etc/apache2/sites-ena
 sudo sh -c "echo CustomLog \${APACHE_LOG_DIR}/access.log combined >> /etc/apache2/sites-enabled/000-default.conf"
 sudo sh -c "echo \<\/VirtualHost\> >> /etc/apache2/sites-enabled/000-default.conf"
 sudo systemctl restart apache2.service
-sudo hostnamectl set-hostname cloud2.netnoir.ru
+sudo hostnamectl set-hostname web2.netnoir.ru
 sudo mkdir /nextcloud
-sudo sh -c "echo 127.0.1.1 cloud2.netnoir.ru > /etc/hosts"
-sudo sh -c "echo 172.20.0.53 cloud2 >> /etc/hosts"
+sudo sh -c "echo 127.0.1.1 web2.netnoir.ru > /etc/hosts"
+sudo sh -c "echo 172.20.0.53 web2 >> /etc/hosts"
 sudo sh -c "echo 172.20.0.2 HSERVER >> /etc/hosts"
 
 sudo sh -c "echo //HSERVER/ncdata  /nextcloud cifs    username=otus,password=qwe123,uid=33,gid=33,iocharset=utf8,nofail,_netdev,noperm,mfsymlinks   0 0 >> /etc/fstab"
@@ -29,7 +29,7 @@ sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/master2.con
 sudo systemctl restart mysql.service
 sudo mysql -uroot -pqwe123 -Bse "CREATE USER 'repl'@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'qwe123'; GRANT ALL PRIVILEGES on *.* TO 'repl'@'%'; ALTER USER 'repl'@'%' IDENTIFIED WITH mysql_native_password BY 'qwe123'; FLUSH PRIVILEGES"
 
-curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="CLOUD2: PREINSTALLATION COMPLETE"
+curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="WEB2: PREINSTALLATION COMPLETE"
 sleep 2
 
 #prometheus/node_extractor installing
@@ -44,7 +44,7 @@ sudo chown node_exporter: /usr/local/bin/node_exporter
 sudo systemctl daemon-reload
 sudo systemctl enable --now node_exporter.service
 
-curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="CLOUD2: NODE_EXTRACTOR INSTALLATION COMPLETE"
+curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="WEB2: NODE_EXTRACTOR INSTALLATION COMPLETE"
 sleep 2
-curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="CLOUD2: SYSTEM READY"
+curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="WEB2: SYSTEM READY"
 
