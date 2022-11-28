@@ -10,7 +10,6 @@ sudo sh -c "echo 172.20.0.48 nginx >> /etc/hosts"
 #
 yum install epel-release -y
 yum install nginx -y
-yum install wget -y
 #
 systemctl disable --now firewalld
 
