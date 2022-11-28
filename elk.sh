@@ -1,10 +1,3 @@
-#System updating
-yum update -y
-yum upgrade -y
-
-curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-1PNc_kGFm4/sendMessage -d chat_id=191948484 -d text="ELK: SYSTEM UPDATED"
-sleep 2
-
 #Preinstallation, system setting 
 hostnamectl set-hostname elk.netnoir.ru
 #
