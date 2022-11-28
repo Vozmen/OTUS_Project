@@ -1,9 +1,3 @@
-#System updating
-yum update -y
-yum upgrade -y
-curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER: SYSTEM UPDATED"
-sleep 2
-
 #Preinstallation, system setting 
 sudo sh -c "echo 127.0.1.1 nginx.netnoir.ru > /etc/hosts"
 sudo sh -c "echo 172.20.0.48 nginx >> /etc/hosts"
