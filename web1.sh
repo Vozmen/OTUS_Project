@@ -1,4 +1,7 @@
 #preinstallation, system setting
+sudo mkdir /data
+sudo sh -c "echo //HSERVER/data  /data cifs    username=otus,password=qwe123,uid=33,gid=33,iocharset=utf8,nofail,_netdev,noperm,mfsymlinks   0 0 >> /etc/fstab"
+sudo mount -a
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/site1 -O /var/www/html/index.php
 sudo sh -c "echo \<VirtualHost \*:80\>  > /etc/apache2/sites-enabled/000-default.conf"
 sudo sh -c "echo ServerAdmin webmaster@localhost >> /etc/apache2/sites-enabled/000-default.conf"
