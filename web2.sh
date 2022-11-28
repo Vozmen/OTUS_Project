@@ -1,4 +1,13 @@
+#System updating
+sudo apt update
+sudo apt upgrade -y
+
+curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="WEB2: SYSTEM UPDATED"
+sleep 2
+
 #preinstallation, system setting
+sudo timedatectl set-timezone Europe/Moscow
+sudo apt install -y php php-apcu php-bcmath php-cli php-common php-curl php-gd php-gmp php-imagick php-intl php-mbstring php-mysql php-zip php-xml unzip cifs-utils nfs-common mysql-server
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/site2 -O /var/www/html/index.php
 sudo sh -c "echo \<VirtualHost \*:80\>  > /etc/apache2/sites-enabled/000-default.conf"
 sudo sh -c "echo ServerAdmin webmaster@localhost >> /etc/apache2/sites-enabled/000-default.conf"
@@ -18,4 +27,20 @@ sudo mysql -uroot -pqwe123 -Bse "CREATE USER 'repl'@'%' IDENTIFIED WITH 'caching
 
 curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="WEB2: PREINSTALLATION COMPLETE"
 sleep 2
+
+#prometheus/node_extractor installing
+sudo mkdir /root/prometheus
+sudo wget https://github.com/prometheus/node_exporter/releases/download/v1.4.0/node_exporter-1.4.0.linux-amd64.tar.gz -O /root/prometheus/node_exporter.tar.gz
+sudo tar xfv /root/prometheus/node_exporter.tar.gz -C /root/prometheus/
+sudo mv /root/prometheus/node_exporter-1.4.0.linux-amd64/node_exporter /usr/local/bin
+sudo rm -R /root/prometheus
+sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/node_exporter.service -O /etc/systemd/system/node_exporter.service
+sudo useradd --no-create-home --shell /usr/sbin/nologin node_exporter
+sudo chown node_exporter: /usr/local/bin/node_exporter
+sudo systemctl daemon-reload
+sudo systemctl enable --now node_exporter.service
+
+curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="WEB2: NODE_EXTRACTOR INSTALLATION COMPLETE"
+sleep 2
 curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="WEB2: SYSTEM READY"
+
