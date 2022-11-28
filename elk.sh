@@ -12,7 +12,7 @@ sudo sh -c "echo 127.0.1.1 elk.netnoir.ru > /etc/hosts"
 sudo sh -c "echo 172.20.0.52 elk >> /etc/hosts"
 #
 yum install -y epel-release
-yum install -y wget
+#yum install -y wget
 yum install -y java-openjdk-devel java-openjdk
 yum install -y net-tools
 #
