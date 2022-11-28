@@ -2,7 +2,7 @@
 yum update -y
 yum upgrade -y
 
-curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-1PNc_kGFm4/sendMessage -d chat_id=191948484 -d text="ELK: SYSTEM UPDATED"
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER: SYSTEM UPDATED"
 sleep 2
 
 #Preinstallation, system setting 
@@ -18,7 +18,7 @@ yum install -y net-tools
 #
 systemctl disable --now firewalld
 
-curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-1PNc_kGFm4/sendMessage -d chat_id=191948484 -d text="ELK: PREINSTALLATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER:  PREINSTALLATION COMPLETED"
 sleep 2
 
 #Elasticsearch installation
@@ -29,7 +29,7 @@ echo -Xms2g > /etc/elasticsearch/jvm.options.d/jvm.options
 echo -Xms2g >> /etc/elasticsearch/jvm.options.d/jvm.options
 systemctl enable --now elasticsearch
 
-curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-1PNc_kGFm4/sendMessage -d chat_id=191948484 -d text="ELK: ELASTICSEARCH INSTALLATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER:  ELASTICSEARCH INSTALLATION COMPLETED"
 sleep 2
 
 #Kibana installation
@@ -39,7 +39,7 @@ rm /etc/kibana/kibana.yml -f
 wget https://cloud.netnoir.ru/index.php/s/PorTKrtyC4ocTFA/download/kibana.yml -O /etc/kibana/kibana.yml --no-check-certificate
 systemctl enable --now kibana
 
-curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-1PNc_kGFm4/sendMessage -d chat_id=191948484 -d text="ELK: KIBANA INSTALLATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER:  KIBANA INSTALLATION COMPLETED"
 sleep 2
 
 #Logstash installation
@@ -56,7 +56,7 @@ do
   sleep 1
 done
 
-curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-1PNc_kGFm4/sendMessage -d chat_id=191948484 -d text="ELK: LOGSTASH INSTALLATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER:  LOGSTASH INSTALLATION COMPLETED"
 sleep 2
-curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-1PNc_kGFm4/sendMessage -d chat_id=191948484 -d text="ELK: SYSTEM READY"
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER:  SYSTEM READY"
 #/usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/nginx.conf
