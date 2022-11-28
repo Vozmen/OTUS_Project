@@ -1,62 +1,44 @@
 #System updating
 yum update -y
 yum upgrade -y
-
 curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER: SYSTEM UPDATED"
 sleep 2
 
 #Preinstallation, system setting 
-hostnamectl set-hostname elk.netnoir.ru
+sudo sh -c "echo 127.0.1.1 nginx.netnoir.ru > /etc/hosts"
+sudo sh -c "echo 172.20.0.48 nginx >> /etc/hosts"
 #
-sudo sh -c "echo 127.0.1.1 elk.netnoir.ru > /etc/hosts"
-sudo sh -c "echo 172.20.0.52 elk >> /etc/hosts"
-#
-yum install -y epel-release
-#yum install -y wget
-yum install -y java-openjdk-devel java-openjdk
-yum install -y net-tools
+yum install epel-release -y
+yum install nginx -y
+yum install wget -y
 #
 systemctl disable --now firewalld
 
-curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER:  PREINSTALLATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER: PREINSTALLATION COMPLETED"
 sleep 2
 
-#Elasticsearch installation
+#Filebeat installation
 mkdir /root/RPMs
-wget https://cloud.netnoir.ru/index.php/s/qY2SYs6SKSoLJ6X/download/elasticsearch_7.17.3_x86_64-224190-9bcb26.rpm -O /root/RPMs/elasticsearch.rpm --no-check-certificate
-rpm -i /root/RPMs/elasticsearch.rpm
-echo -Xms2g > /etc/elasticsearch/jvm.options.d/jvm.options
-echo -Xms2g >> /etc/elasticsearch/jvm.options.d/jvm.options
-systemctl enable --now elasticsearch
+wget https://cloud.netnoir.ru/index.php/s/WTZwZZHiirZQoic/download/filebeat_7.17.3_x86_64-224190-4c3205.rpm -O /root/RPMs/filebeat_7.17.3_x86_64-224190-4c3205.rpm --no-check-certificate
+rpm -i /root/RPMs/*.rpm
+wget https://cloud.netnoir.ru/index.php/s/QKca4tmJ5SEBX9k/download/filebeat.yml -O /etc/filebeat/filebeat.yml --no-check-certificate
 
-curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER:  ELASTICSEARCH INSTALLATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER: FILEBEAT INSTALLATION COMPLETED"
 sleep 2
 
-#Kibana installation
-wget https://cloud.netnoir.ru/index.php/s/mKtK6sq999Q8dak/download/kibana_7.17.3_x86_64-224190-b13e53.rpm -O /root/RPMs/kibana.rpm --no-check-certificate
-rpm -i /root/RPMs/kibana.rpm
-rm /etc/kibana/kibana.yml -f
-wget https://cloud.netnoir.ru/index.php/s/PorTKrtyC4ocTFA/download/kibana.yml -O /etc/kibana/kibana.yml --no-check-certificate
-systemctl enable --now kibana
+#Nginx setting
+rm /etc/nginx/sites-available/default -f
+wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/default -O /etc/nginx/nginx.conf
+systemctl restart nginx.service
 
-curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER:  KIBANA INSTALLATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER: BALANCER CONFIGURED"
 sleep 2
 
-#Logstash installation
-wget https://cloud.netnoir.ru/index.php/s/nwcdBJ3N7BkW7Lr/download/logstash_7.17.3_x86_64-224190-3a605f.rpm -O /root/RPMs/logstash.rpm --no-check-certificate
-rpm -i /root/RPMs/logstash.rpm
-rm /etc/logstash/logstash.yml -f
-wget https://cloud.netnoir.ru/index.php/s/tarb88YsZrFFWDT/download/logstash.yml -O /etc/logstash/logstash.yml --no-check-certificate
-wget https://cloud.netnoir.ru/index.php/s/pex86yitMq8KyE8/download/nginx.conf -O /etc/logstash/conf.d/nginx.conf --no-check-certificate
-systemctl enable --now logstash
-#
-until [[ "$fin" == "5400" ]]
-fin=$(netstat -tulpn | grep -oE 5400)
-do
-  sleep 1
-done
+#Services activated
+systemctl enable --now nginx
+systemctl enable --now filebeat
+curl localhost
 
-curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER:  LOGSTASH INSTALLATION COMPLETED"
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER: SERVICES ACTIVATED"
 sleep 2
-curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER:  SYSTEM READY"
-#/usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/nginx.conf
+curl -s -X POST https://api.telegram.org/bot5920470511:AAHk7V77EaXhL64-0e7gpAqOWgcNOiHDmoQ/sendMessage -d chat_id=191948484 -d text="BALANCER: SYSTEM READY"
