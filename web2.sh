@@ -17,9 +17,13 @@ sudo sh -c "echo CustomLog \${APACHE_LOG_DIR}/access.log combined >> /etc/apache
 sudo sh -c "echo \<\/VirtualHost\> >> /etc/apache2/sites-enabled/000-default.conf"
 sudo systemctl restart apache2.service
 sudo hostnamectl set-hostname web2.netnoir.ru
+sudo mkdir /data
 sudo sh -c "echo 127.0.1.1 web2.netnoir.ru > /etc/hosts"
 sudo sh -c "echo 172.20.0.53 web2 >> /etc/hosts"
 sudo sh -c "echo 172.20.0.2 HSERVER >> /etc/hosts"
+
+sudo sh -c "echo //HSERVER/data  /data cifs    username=otus,password=qwe123,uid=33,gid=33,iocharset=utf8,nofail,_netdev,noperm,mfsymlinks   0 0 >> /etc/fstab"
+sudo mount -a
 
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/master2.conf -O /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo systemctl restart mysql.service
@@ -39,6 +43,7 @@ sudo useradd --no-create-home --shell /usr/sbin/nologin node_exporter
 sudo chown node_exporter: /usr/local/bin/node_exporter
 sudo systemctl daemon-reload
 sudo systemctl enable --now node_exporter.service
+rm /data/lockfile -f
 
 curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="WEB2: NODE_EXTRACTOR INSTALLATION COMPLETE"
 sleep 2
