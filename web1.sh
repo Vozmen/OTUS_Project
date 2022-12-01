@@ -24,6 +24,7 @@ sudo sh -c "echo 172.20.0.2 HSERVER >> /etc/hosts"
 
 sudo sh -c "echo //HSERVER/data  /data cifs    username=otus,password=qwe123,uid=33,gid=33,iocharset=utf8,nofail,_netdev,noperm,mfsymlinks   0 0 >> /etc/fstab"
 sudo mount -a
+touch /data/lockfile
 
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/master1.conf -O /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo systemctl restart mysql.service
@@ -48,6 +49,10 @@ curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9
 sleep 2
 
 #mysql-server setting (sync)
+until [[ -e /data/lockfile ]]
+do
+  sleep 1
+done
 sudo mysql -uroot -pqwe123 -Bse "STOP SLAVE"
 sudo mysql -h 172.20.0.53 -urepl -pqwe123 -Bse "FLUSH TABLES WITH READ LOCK"
 binlog1=$(mysql -h 172.20.0.53 -urepl -pqwe123 -Bse "SHOW MASTER STATUS" | cut -f 1)
