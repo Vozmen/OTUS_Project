@@ -24,7 +24,6 @@ sudo sh -c "echo 172.20.0.2 HSERVER >> /etc/hosts"
 
 sudo sh -c "echo //HSERVER/data  /data cifs    username=otus,password=qwe123,uid=33,gid=33,iocharset=utf8,nofail,_netdev,noperm,mfsymlinks   0 0 >> /etc/fstab"
 sudo mount -a
-touch /data/lockfile
 
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/master1.conf -O /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo systemctl restart mysql.service
@@ -73,6 +72,7 @@ for var in $(cat $table)
 do
 sudo mysql -uroot -pqwe123 testdb < /data/testdb/$var.sql
 done
+rm /data/lockfile -f
 
 curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="WEB1: SQL-SERVER SYNCHRONIZATION COMPLETED"
 sleep 2
