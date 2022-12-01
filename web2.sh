@@ -43,7 +43,7 @@ sudo useradd --no-create-home --shell /usr/sbin/nologin node_exporter
 sudo chown node_exporter: /usr/local/bin/node_exporter
 sudo systemctl daemon-reload
 sudo systemctl enable --now node_exporter.service
-rm /data/lockfile -f
+touch /data/lockfile
 
 curl -s -X POST https://api.telegram.org/bot5961686797:AAE2jtmp54yatQTVZMJwUzpx2TJZ2B5LHmo/sendMessage -d chat_id=191948484 -d text="WEB2: NODE_EXTRACTOR INSTALLATION COMPLETE"
 sleep 2
