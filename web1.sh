@@ -7,7 +7,6 @@ sleep 2
 
 #preinstallation, system setting
 sudo timedatectl set-timezone Europe/Moscow
-sudo apt install -y php php-apcu php-bcmath php-cli php-common php-curl php-gd php-gmp php-imagick php-intl php-mbstring php-mysql php-zip php-xml unzip cifs-utils nfs-common mysql-server
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/site1 -O /var/www/html/index.php
 sudo sh -c "echo \<VirtualHost \*:80\>  > /etc/apache2/sites-enabled/000-default.conf"
 sudo sh -c "echo ServerAdmin webmaster@localhost >> /etc/apache2/sites-enabled/000-default.conf"
@@ -48,10 +47,6 @@ curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9
 sleep 2
 
 #mysql-server setting (sync)
-until [[ -e /data/lockfile ]]
-do
-  sleep 1
-done
 sudo mysql -uroot -pqwe123 -Bse "STOP SLAVE"
 sudo mysql -h 172.20.0.53 -urepl -pqwe123 -Bse "FLUSH TABLES WITH READ LOCK"
 binlog1=$(mysql -h 172.20.0.53 -urepl -pqwe123 -Bse "SHOW MASTER STATUS" | cut -f 1)
@@ -72,7 +67,6 @@ for var in $(cat $table)
 do
 sudo mysql -uroot -pqwe123 testdb < /data/testdb/$var.sql
 done
-rm /data/lockfile -f
 
 curl -s -X POST https://api.telegram.org/bot5959730095:AAE-oUFfnSh_vkP8jlieBJAj9KpE-WXK0Yc/sendMessage -d chat_id=191948484 -d text="WEB1: SQL-SERVER SYNCHRONIZATION COMPLETED"
 sleep 2
