@@ -10,13 +10,6 @@ hostnamectl set-hostname elk.netnoir.ru
 #
 sudo sh -c "echo 127.0.1.1 elk.netnoir.ru > /etc/hosts"
 sudo sh -c "echo 172.20.0.52 elk >> /etc/hosts"
-#
-yum install -y epel-release
-#yum install -y wget
-yum install -y java-openjdk-devel java-openjdk
-yum install -y net-tools
-#
-systemctl disable --now firewalld
 
 curl -s -X POST https://api.telegram.org/bot5821181278:AAHVF4q5b9EuqA7pLbmC7XnC-1PNc_kGFm4/sendMessage -d chat_id=191948484 -d text="ELK: PREINSTALLATION COMPLETED"
 sleep 2
