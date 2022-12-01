@@ -16,13 +16,9 @@ sudo sh -c "echo CustomLog \${APACHE_LOG_DIR}/access.log combined >> /etc/apache
 sudo sh -c "echo \<\/VirtualHost\> >> /etc/apache2/sites-enabled/000-default.conf"
 sudo systemctl restart apache2.service
 sudo hostnamectl set-hostname web2.netnoir.ru
-sudo mkdir /data
 sudo sh -c "echo 127.0.1.1 web2.netnoir.ru > /etc/hosts"
 sudo sh -c "echo 172.20.0.53 web2 >> /etc/hosts"
 sudo sh -c "echo 172.20.0.2 HSERVER >> /etc/hosts"
-
-sudo sh -c "echo //HSERVER/data  /data cifs    username=otus,password=qwe123,uid=33,gid=33,iocharset=utf8,nofail,_netdev,noperm,mfsymlinks   0 0 >> /etc/fstab"
-sudo mount -a
 
 sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/master2.conf -O /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo systemctl restart mysql.service
