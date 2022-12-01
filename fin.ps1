@@ -1,4 +1,4 @@
-Remove-Item "F:\1.IT\OTUS\project\exitcode.txt" -Force
+Remove-Item "F:\1.IT\OTUS\project\exitcode.txt" -ErrorAction SilentlyContinue
 $srv = 'web1', 'web2', 'promet', 'nginx', 'elk'
 Write-Output $srv | foreach-Object {
     ssh $_ "echo OK"
@@ -17,8 +17,19 @@ Write-Host -Object "Starting Installation" -BackgroundColor Green -ForegroundCol
 Start-Sleep -s 2
 clear
 
-ssh nginx "yum install wget -y"
-ssh elk "yum install wget -y"
+$srv = 'web1', 'web2'
+$srv | foreach-Object -parallel{
+    ssh $_ "sudo apt install -y php php-apcu php-bcmath php-cli php-common php-curl php-gd php-gmp php-imagick php-intl php-mbstring php-mysql php-zip php-xml unzip cifs-utils nfs-common mysql-server"
+}
+
+$srv = 'elk', 'nginx'
+$srv | foreach-Object -parallel{
+    ssh $_ "yum install -y wget epel-release & systemctl disable --now firewalld"
+}
+
+ssh elk "yum install -y net-tools java-openjdk-devel java-openjdk"
+
+Write-Host -Object "Software installed" -BackgroundColor Green -ForegroundColor White
 
 $srv = 'web1', 'web2', 'promet', 'nginx', 'elk'
 $srv | foreach-Object -parallel{
