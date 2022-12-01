@@ -8,7 +8,6 @@ sleep 2
 sudo sh -c "echo 127.0.1.1 nginx.netnoir.ru > /etc/hosts"
 sudo sh -c "echo 172.20.0.48 nginx >> /etc/hosts"
 #
-yum install epel-release -y
 mkdir /root/RPMs
 wget https://nginx.org/packages/mainline/centos/7/x86_64/RPMS/nginx-1.9.9-1.el7.ngx.x86_64.rpm -O /root/RPMs/nginx-1.9.9-1.el7.ngx.x86_64.rpm
 rpm -i /root/RPMs/nginx-1.9.9-1.el7.ngx.x86_64.rpm
