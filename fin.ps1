@@ -11,11 +11,16 @@ $exitcode = Get-Content $filename | ForEach-Object {
 Remove-Item "F:\1.IT\OTUS\project\ok.txt"
 if ( $exitcode.count -eq 5 )
 {
-Write-Host -Object "Connection to hosts Established" -BackgroundColor Green -ForegroundColor White
+
+Write-Host "=" -ForegroundColor Green -BackgroundColor Black -noNewline
+Write-Host -Object "CONNECTION TO HOSTS ESTABLISHED" -BackgroundColor Green -ForegroundColor White -noNewline
+Write-Host "=" -ForegroundColor Green -BackgroundColor Black 
 Start-Sleep -s 2
-Write-Host -Object "Starting Installation" -BackgroundColor Green -ForegroundColor White
+Write-Host "======" -ForegroundColor Green -BackgroundColor Black -noNewline
+Write-Host -Object "STARTING INSTALLATION" -BackgroundColor Green -ForegroundColor White -noNewline
+Write-Host "======" -ForegroundColor Green -BackgroundColor Black
 Start-Sleep -s 2
-clear
+Clear-Host
 
 $srv = 'web1', 'web2'
 $srv | foreach-Object -parallel{
@@ -29,17 +34,23 @@ $srv | foreach-Object -parallel{
 
 ssh elk "yum install -y net-tools java-openjdk-devel java-openjdk"
 
-Write-Host -Object "Software installed" -BackgroundColor Green -ForegroundColor White
+Write-Host "======" -ForegroundColor Green -BackgroundColor Black -noNewline
+Write-Host -Object "SOFTWARE PREINSTALLED" -BackgroundColor Green -ForegroundColor White -noNewline
+Write-Host "======" -ForegroundColor Green -BackgroundColor Black
 
 $srv = 'web1', 'web2', 'promet', 'nginx', 'elk'
 $srv | foreach-Object -parallel{
     ssh $_ "sudo wget https://raw.githubusercontent.com/Vozmen/OTUS_Project/main/$_.sh -O /root/script && sudo chmod +x /root/script && sudo /root/script"
 }
-Write-Host -Object "INSTALLATION COMPLETE" -BackgroundColor Green -ForegroundColor White
+Write-Host "======" -ForegroundColor Green -noNewline
+Write-Host "INSTALLATION COMPLETE" -BackgroundColor Green -ForegroundColor White -noNewline
+Write-Host "======" -ForegroundColor Green 
 
 }
 else
 {
-clear
-Write-Host -Object "INSTALLATION FAILED" -BackgroundColor Red -ForegroundColor White
+Clear-Host
+Write-Host "======" -ForegroundColor Red -noNewline
+Write-Host -Object "INSTALLATION FAILED" -BackgroundColor Red -ForegroundColor White -noNewline
+Write-Host "======" -ForegroundColor Red
 }
