@@ -16,11 +16,11 @@ Write-Host "=" -ForegroundColor Green -BackgroundColor Black -noNewline
 Write-Host -Object "CONNECTION TO HOSTS ESTABLISHED" -BackgroundColor Green -ForegroundColor White -noNewline
 Write-Host "=" -ForegroundColor Green -BackgroundColor Black 
 Start-Sleep -s 2
+Clear-Host
 Write-Host "======" -ForegroundColor Green -BackgroundColor Black -noNewline
 Write-Host -Object "STARTING INSTALLATION" -BackgroundColor Green -ForegroundColor White -noNewline
 Write-Host "======" -ForegroundColor Green -BackgroundColor Black
 Start-Sleep -s 2
-Clear-Host
 
 $srv = 'web1', 'web2'
 $srv | foreach-Object -parallel{
